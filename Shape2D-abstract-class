@@ -1,0 +1,178 @@
+//Implementation of abstract class
+//Author K.M.Kavyasri
+
+abstract class Shape2D
+{
+    double dim1, dim2;
+
+//default constructor
+Shape2D()
+{
+    dim1 = 0;
+    dim2 = 0;
+}
+//parameterised constructor
+Shape2D(double dim1, double dim2)
+{
+    this.dim1 = dim1;
+    this.dim2 = dim2;
+}
+//copy constructor
+Shape2D(Shape2D ob)
+{
+    dim1 = ob.dim1;
+    dim2 = ob.dim2;
+}
+//concrete method 
+void print()
+{
+    System.out.println("dim1: " +dim1 + " " +"dim2: " +dim2);
+}
+//declare abstract methods
+abstract double area();
+abstract double circumference();
+abstract void display();
+}
+//create rectangle class
+class Rectangle extends Shape2D
+{
+//default constructor
+Rectangle()
+{
+    super();
+}
+//parameterised constructor
+Rectangle(double length, double breadth)
+{
+    super(length, breadth);
+}
+//copy constructor 
+Rectangle(Rectangle r)
+{
+    super(r);
+}
+
+double area()
+{
+ return dim1*dim2;   
+}
+double circumference()
+{
+    return 2*(dim1 + dim2);
+}
+void display()
+{
+    System.out.println("\nRectangle");
+    print();
+    System.out.println("area: " +area());
+    System.out.println("circumference: " +circumference());
+}
+}
+//create triangle class
+class Triangle extends Shape2D
+{
+//default constructor
+Triangle()
+{
+    super();
+}
+//parameterised constructor
+Triangle(double base, double height)
+{
+    super(base, height);
+}
+//copy constructor 
+Triangle(Triangle t)
+{
+    super(t);
+}
+
+double area()
+{
+ return (dim1*dim2)/2;   
+}
+double circumference()
+{
+   double hypotenuse = Math.sqrt((dim1*dim1)+(dim2*dim2));
+   return (dim1 + dim2 + hypotenuse);
+}
+void display()
+{
+    System.out.println("\nTriangle");
+    print();
+    System.out.println("area: " +area());
+    System.out.println("circumference: " +circumference());
+}
+}
+//create rectangle class
+class Circle extends Shape2D
+{
+//default constructor
+Circle()
+{
+    super();
+}
+//parameterised constructor
+Circle(double radius)
+{
+    super(radius, 0);
+}
+//copy constructor 
+Circle(Circle c)
+{
+    super(c);
+}
+
+double area()
+{
+ return 3.14*dim1*dim1;   
+}
+double circumference()
+{
+    return 2*3.14*dim1;
+}
+void display()
+{
+    System.out.println("\nCircle");
+    print();
+    System.out.println("area: " +area());
+    System.out.println("circumference: " +circumference());
+}
+}
+class Main
+{
+    public static void main(String args[])
+    {
+        Rectangle r1 = new Rectangle();
+        Rectangle r2 = new Rectangle(6,7);
+        Rectangle r3 = new Rectangle(r2);
+        
+        Triangle t1 = new Triangle();
+        Triangle t2 = new Triangle(4,6);
+        Triangle t3 = new Triangle(t2);
+        
+        Circle c1 = new Circle();
+        Circle c2 = new Circle(7.0);
+        Circle c3 = new Circle(c2);
+        
+        r1.display();
+        r2.display();
+        r3.display();
+        
+        t1.display();
+        t2.display();
+        t3.display();
+        
+        c1.display();
+        c2.display();
+        c3.display();
+        
+        c1.display();
+        c2.display();
+        c3.display();
+        
+        
+        
+    }
+}
+
