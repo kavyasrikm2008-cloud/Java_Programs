@@ -1,0 +1,97 @@
+//implementation of heirarchical inheritance
+//Author K.M.Kavyasri
+
+import java.util.*;
+class Publication
+{
+    String title;
+    float price;
+    
+    Scanner in = new Scanner (System.in);
+    
+    void getData()
+    {
+      System.out.print("Enter title: ");
+      title = in.nextLine();
+      System.out.print("Enter price: ");
+      price = in.nextFloat();
+      in.nextLine();
+    }
+    
+    void putData()
+    {
+        System.out.println("title: " +title +"\n" +"price: " +price);
+    }
+}
+//create class book
+class Book extends Publication
+{
+    int pageCount;
+    
+    void getData()
+    {
+        super.getData();
+        System.out.print("Enter page count: ");
+        pageCount = in.nextInt();
+        in.nextLine();
+    }
+    
+    void putData()
+    {
+        super.putData();
+        System.out.println("page count: " +pageCount);
+    }
+}
+//create class tape 
+class Tape extends Publication
+{
+    float playingTime;
+    
+    void getData()
+    {
+        super.getData();
+        System.out.print("Enter playing Time in minutes: ");
+        playingTime = in.nextFloat();
+        in.nextLine();
+    }
+    
+    void putData()
+    {
+        super.putData();
+        System.out.println("Playing Time: " +playingTime);
+    }
+}
+//create main 
+class Main 
+{
+    public static void main(String args[])
+    {
+        Book[] b = new Book[3];
+        Tape[] t = new Tape[2];
+        for(int i=0;i<3;i++)
+        {
+            b[i] = new Book();
+            System.out.println("\n Book "+(i+1));
+            b[i].getData();
+            
+        }
+        for(int i=0;i<2;i++)
+        {
+            t[i] = new Tape();
+            System.out.println("\nTape " +(i+1));
+            t[i].getData();
+        }
+        System.out.println();
+        for(int i=0;i<3;i++)
+        {
+            System.out.println("\n Book "+(i+1));
+            b[i].putData();
+        }
+        for(int i=0;i<2;i++)
+        {
+            System.out.println("\n Tape "+(i+1));
+            t[i].putData();
+        }
+        
+    }
+}
