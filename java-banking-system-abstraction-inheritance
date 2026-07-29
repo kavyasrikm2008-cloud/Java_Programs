@@ -1,0 +1,89 @@
+//Implementation of abstraction and inheritance
+//Author K.M.kavyasri
+import java.util.*;
+abstract class Account
+{
+    int accountID;
+    int customerID;
+ 
+ Account(int accountID, int customerID)
+ {
+     this.accountID = accountID;
+     this.customerID = customerID;
+ }
+ //abstract methods
+ abstract double deposit(int accountID, double depositAmt);
+ abstract double withdraw(int accountID, double withdrawAmt);
+ 
+}
+class SavingAccount extends Account 
+{
+    double balance;
+    SavingAccount(int accountID, int customerID, double balance)
+    {
+        super(accountID, customerID);
+        this.balance = balance;
+        
+    }
+    double deposit(int accountID, double depositAmt)
+    {
+        if(this.accountID == accountID)
+        {
+            balance += depositAmt;
+            return balance;
+        }
+        else
+        {
+            System.out.println("invalid account");
+            return -1;
+        }
+    }
+    
+    double withdraw(int accountID, double withdrawAmt)
+    {
+        if(this.accountID!=accountID)
+        {
+            System.out.println("invalid account");
+            return -1;
+        }
+        else if(withdrawAmt<=balance)
+        {
+            balance -= withdrawAmt;
+            return balance;
+        }
+        else
+        {
+            System.out.println("insufficient balance");
+            return balance;
+        }
+    }
+}
+//create main 
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter AccountID: ");
+        accountID = in.nextInt();
+        System.out.println("Enter CustomerID: ");
+        customerID = in.nextInt();
+        System.out.println("Enter initial Balance: ");
+        balance = in.nextDouble();
+        SavingAccount ob = new SavingAccount(accountID, customerID, balance);
+        System.out.println("Enter accountID for Deposit: ");
+         accountID = in.nextInt();
+         System.out.println("Enter Deposit amount : ");
+         depositAmt = in.nextDouble();
+         double result = s.deposit(accountID, depositAmt);
+         if(result!=-1)
+         System.out.println("The updated balance: " +result);
+         System.out.print("Enter Account ID for Withdrawal: ");
+        int withId = in.nextInt();
+        System.out.print("Enter Withdrawal Amount: ");
+        double withAmt = in.nextDouble();
+        result = s.withdraw(withId, withAmt);
+        if (result != -1)
+        System.out.println("Balance after Withdrawal: " + result);
+    }
+}
