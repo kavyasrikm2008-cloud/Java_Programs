@@ -1,0 +1,45 @@
+package p2;
+
+import p1.Employee;
+
+public class PartTimeEmployee extends Employee {
+    
+    int workinghrs;
+    double rateperhr;
+    
+    public PartTimeEmployee(String name, int age, int workinghrs, double rateperhr)
+    {
+        super(name,age);
+        this.workinghrs = workinghrs;
+        this.rateperhr = rateperhr;
+    }
+    public double calculatePay()
+    {
+        return workinghrs*rateperhr;
+    }
+    public void display()
+    {
+        System.out.println("name: " +name);
+        System.out.println("age: " +age);
+        System.out.println("working hours: " +workinghrs);
+        System.out.println("rateperhr: " +rateperhr);
+        System.out.println("salary: " +calculatePay());
+    }
+    
+}
+
+
+
+package p2;
+public class Test {
+    public static void main(String args[])
+    {
+        PartTimeEmployee e1 = new PartTimeEmployee("riya", 23, 20, 200);
+         PartTimeEmployee e2 = new PartTimeEmployee("shreya", 27, 23, 500);
+         System.out.println("employee 1");
+         e1.display();
+         System.out.println("employee 2");
+         e2.display();
+
+    }
+}
