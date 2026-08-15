@@ -1,0 +1,82 @@
+package p1;
+import java.util.Scanner;
+public class Publication {
+    String title;
+    float price;
+    
+    public void getData()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter title: ");
+        title = in.nextLine();
+        System.out.println("Enter price: ");
+        price = in.nextFloat();
+        
+    }
+    public void putData()
+    {
+        System.out.println("title: " +title);
+        System.out.println("price: "+price);
+    }
+}
+
+
+
+package p2;
+import p1.Publication;
+import java.util.Scanner;
+public class Book extends Publication {
+    int pagecount;
+    
+    public void getData()
+    {
+        super.getData();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter pagecount: ");
+       pagecount =  in.nextInt();
+    }
+    public void putData()
+    {
+        System.out.println("pagecount:  "+pagecount);
+        
+    }
+}
+
+package p2;
+import p1.Publication;
+import java.util.Scanner;
+public class Tape extends Publication {
+    float playingTime;
+    
+    public void getData()
+    {
+        super.getData();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter playingTime: ");
+       playingTime =  in.nextInt();
+    }
+    public void putData()
+    {
+        System.out.println("playing time:  "+playingTime);
+        
+    }
+}
+
+package p2;
+public class Test {
+    public static void main(String args[])
+    {
+        Book b = new Book();
+        Tape t = new Tape();
+        
+        System.out.println("Enter Book details");
+        b.getData();
+        System.out.println("\n Enter tape details");
+        t.getData();
+        System.out.println("\n Book details");
+        b.putData();
+        System.out.println("\n Tape details");
+        t.putData();
+        
+    }
+}
