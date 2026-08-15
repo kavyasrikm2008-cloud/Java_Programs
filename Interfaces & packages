@@ -1,0 +1,47 @@
+package pkg;
+
+public interface Inter1 {
+    int arr[] = {10,25,5,33,56,32,12,1,4,2};
+}
+
+
+
+package pkg;
+
+public interface Inter2 {
+    void max_min(int arr[]);
+    
+}
+
+
+
+import pkg.Inter1;
+import pkg.Inter2;
+
+public class Test implements Inter1, Inter2 {
+   public void max_min(int arr[])
+   {
+       int max = arr[0];
+       int min = arr[0];
+       for(int i=0;i<10;i++)
+       {
+           if(arr[i]>max)
+           {
+               max = arr[i];
+           }
+           if(arr[i]<min)
+           {
+               min = arr[i];
+           }
+       }
+       System.out.println("maximum: " +max);
+       System.out.println("minimum: " +min);
+       
+   }
+    public static void main(String args[])
+    {
+        Test ob = new Test();
+        ob.max_min(Inter1.arr);
+        
+    }
+}
