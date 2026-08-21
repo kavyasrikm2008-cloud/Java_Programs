@@ -1,0 +1,58 @@
+import java.util.Scanner;
+class AgeMisMatchException extends Exception
+{
+    AgeMisMatchException(String msg)
+    {
+        super(msg);
+    }
+    
+}
+class Employee
+{
+    int empid;
+    String empName;
+    int age;
+    Employee(int empid, String empName, int age)
+    {
+        this.empid = empid;
+        this.empName = empName;
+        this.age = age;
+    }
+    void addEmployee()throws AgeMisMatchException
+    {
+        if(age<=18)
+        {
+            throw new AgeMisMatchException("invalid age. age must greater than 18");
+        }
+        System.out.println("registeration success");
+        System.out.println("Employee ID: " +empid);
+        System.out.println("Employee name: " +empName);
+        System.out.println("Employee age: " +age);
+        
+    }
+}
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner (System.in);
+        System.out.print("Enter Employee ID: ");
+        int id = in.nextInt();
+        in.nextLine();
+        System.out.print("Enter Employee Name: ");
+        String name  =in.nextLine();
+        
+        System.out.print("Enter Employee Age: ");
+        int age = in.nextInt();
+        
+        Employee emp = new Employee(id, name, age);
+        try{
+            emp.addEmployee();
+        }
+        catch(AgeMisMatchException e)
+        {
+            System.out.println("registeration failed");
+            System.out.println(e);
+        }
+    }
+}
