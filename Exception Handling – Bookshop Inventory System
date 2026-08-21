@@ -1,0 +1,90 @@
+import java.util.Scanner;
+class IncorrectinputException extends Exception
+{
+    IncorrectinputException(String msg)
+    {
+        super(msg);
+    }
+    
+    
+}
+class Book
+{
+    String author;
+    String title;
+    double price;
+    String publisher;
+    int stock;
+    Book(String author, String title, double price, String publisher, int stock)
+    {
+        this.author = author;
+        this.title = title;
+        this.price = price;
+        this.publisher = publisher;
+        this.stock = stock;
+    }
+
+}
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        Book[] b = new Book[3];
+        b[0] = new Book("R.K Narayan", "Malgudi days", 300, "penguin", 5);
+        b[1] = new Book("J.K Rowling", "Harry Potter", 500, "Bloomsbury", 10);
+        b[2] = new Book("Chetan bhagat", "Five Point Someone", 400, "Rupa", 3);
+        
+        System.out.print("Enter book title: ");
+        String title = in.nextLine();
+        System.out.print("Enter author: ");
+        String author = in.nextLine();
+        
+        boolean found = false;
+        try{
+            for(int i=0;i<b.length;i++)
+            {
+                if(b[i].title.equalsIgnoreCase(title)&&b[i].author.equalsIgnoreCase(author))
+                {
+                    found = true;
+                    System.out.println("book available");
+                    System.out.println("title: " +b[i].title);
+                    System.out.println("author: " +b[i].author);
+                    System.out.println("price: " +b[i].price);
+                    System.out.println("publisher: " +b[i].publisher);
+                    System.out.println("stock: " +b[i].stock);
+                    
+                    System.out.print("Enter number of Copies: ");
+                    int copies = in.nextInt();
+                    if(copies<0)
+                    {
+                        
+                            throw new IncorrectinputException("copies cannot be negative");
+                        
+                    }
+                    if(copies<=b[i].stock)
+                    {
+                        double total = copies*b[i].price;
+                        System.out.println("total: " +total);
+                    }
+                    else{
+                        System.out.println("required copies not in stock");
+                    }
+                    break;
+                }
+            }
+        
+            if(!found)
+            {
+                System.out.println("book is not available");
+            }
+        }
+            catch(IncorrectinputException e)
+            {
+                System.out.println(e);
+            }
+        
+        
+        
+    }
+}
